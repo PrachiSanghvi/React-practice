@@ -1,8 +1,10 @@
 import DropDown from './DropDown';
 import ImageGallery from './ImageGallery';
 import Clock from './Clock';
+import PopUp from './PopUp';
 import './App.css';
-import React,{ Component } from 'react';
+import React from 'react';
+import Udemy from './Udemy';
 
 const { useEffect , useState } = React
 
@@ -28,6 +30,7 @@ function WelcomeMessage ({children}) {
 function GoodByeMessage ({myprop}) {
   return <p className="good-bye-message">{myprop}</p>
 }
+ 
 
 function App() {
   return (
@@ -36,6 +39,10 @@ function App() {
         <div style={{"display":"flex","width":"100%","justifyContent":"space-around"}}>
           <WelcomeMessage>special prop</WelcomeMessage>
           <GoodByeMessage myprop={"Prop pass as attribute"}/>
+
+          {/*  pass props to a react conponent in another file */}
+          <Udemy courseName={"Udemy"}/>
+          
         </div>
         <div style={{"display":"flex","width":"100%","justifyContent":"space-around"}}>
           <Counter/>
@@ -44,6 +51,7 @@ function App() {
         </div>
         <div style={{"marginTop":"20px"}}>
           <Clock/>
+          <PopUp/>
         </div>
       </header>
     </div>

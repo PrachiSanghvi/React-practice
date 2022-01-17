@@ -2,24 +2,35 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-// import reportWebVitals from './reportWebVitals';
-// import reactDom from 'react-dom';
 
-class HelloExample extends React.Component {
-  render() {
-    return <div>Hello {this.props.gettingWorld}</div>
-  }
-}
+var rootDiv =  document.getElementById('root');
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
-  // <HelloExample gettingWorld="Prachi" />,
+  rootDiv
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
+// ** StrictMode **
+//  StrictMode  is a tool for highlighting potential problems in an application.
+//  Like Fragment, StrictMode does not render any visible UI. 
+// It activates additional checks and warnings for its descendants.
+// Strict mode checks are run in development mode only; they do not impact the production build.
+
+
+// class HelloExample extends React.Component {
+//   render() {
+//     return <div>Hello {this.props.gettingWorld}</div>
+//   }
+// }
+// ReactDOM.render(
+//   <HelloExample gettingWorld="Prachi" />,
+//   rootDiv
+// );
+
+// var templateDiv = React.createElement("span", null, "prachi here");
+// ReactDOM.render(
+//   templateDiv,
+//   rootDiv
+// );

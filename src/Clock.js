@@ -5,12 +5,11 @@ const Clock = () => {
 
   const CalculateTimeLeft = () => {
     let year = new Date().getFullYear();
-    const diffrence = +new Date(`01/03/${year}`) - +new Date();
-    console.log("+new Date(`01/03/${year}`)", +new Date(`01/03/${year}`));
+    const diffrence = +new Date(`01/06/${year}`) - +new Date();
+    console.log("+new Date(01/03/year)", +new Date(`01/03/${year}`));
     console.log("+new Date()",+new Date());
     console.log("diffrence", diffrence);
     let timeLeft = {};
-
 
     if (diffrence > 0) {
       timeLeft = {
