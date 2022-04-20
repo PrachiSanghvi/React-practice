@@ -40,7 +40,7 @@ class PopUp extends React.Component {
       {this.state.showPopup ? <PopupElement text='React Learning' closePopup={this.togglePopup.bind(this)} /> : null}
     </div>
     )
-  }
+  } 
 }
 
 export default PopUp;

@@ -25,9 +25,91 @@ const mutliplier = {
   }
 }
 
+// random number generate
+const onMakeDecision = () => {
+  const randomNum = Math.floor(Math.random() * userData.stream.length);
+  const option = userData.stream[randomNum];
+  console.log(option);
+}
+
 userData.printUserData();
 console.log(userData.printUserStream());
 console.log("mutliplier",mutliplier.multiply());
+
+let counter = 0;
+const addOne = () => {
+  counter++;
+  console.log("1 added",counter);
+  renderCounter()
+}
+
+const minusOne = () => {
+  counter--;
+  console.log("1 minus",counter);
+  renderCounter()
+}
+
+const reset = () => {
+  counter = 0;
+  console.log("reset button",counter);
+  renderCounter()
+}
+
+// Mathamatical oparation +, - .reset button
+const numbers= [55,100,25]
+const appRoot = document.getElementById('root');
+const renderCounter = () => {
+  const templateTwo = (
+    <div>
+      <h1>Count:{counter}</h1>
+      <button id="counter_id" className="button" onClick={addOne}>Plus</button>
+      <button id="counter_id" className="button" onClick={minusOne}>Minus</button>
+      <button id="counter_id" className="button" onClick={reset}>Reset</button>
+      <button onClick={onMakeDecision}>Random option selection</button>
+      {
+        numbers.map((number) => {
+          return <p key={number}>Number : {number*2}</p>
+        })
+      }
+    </div>
+  );
+  // reactDom.render(templateTwo,appRoot)
+  return templateTwo;
+}
+
+// on form submit option add on array
+const onFormSubmit = (e) => {
+  e.preventDefault(); 
+  const optionValue = e.target.elements.option.value;
+  if (optionValue) {
+    userData.stream.push(optionValue);
+    e.target.elements.option.value = '';
+    OptionForm();
+  } 
+}
+
+// removeall button click
+const removeAll = () => {
+  userData.stream = [];
+  OptionForm();
+}
+
+// Form that has input and button and remove all button
+const OptionForm = () => {
+  const inputForm = (
+    <div>
+      <form onSubmit={onFormSubmit}>
+        <input type="text" name="option" />
+        <button>Add option</button>
+        {userData.stream.length > 0 ? userData.stream.map(streamOption => <p>{streamOption}</p>):'No options available'}
+        {userData.stream.length}
+        {userData.stream.length > 0 ? <button onClick={removeAll}>Remove All</button>:''}
+      </form>
+    </div>
+  );
+  // reactDom.render(inputForm,appRoot);
+}
+
  
 // check for location exists
 function getLocation (location) {
@@ -36,13 +118,8 @@ function getLocation (location) {
   }
 }
 
-const addOne = () => {
-  console.log("1 added");
-}
-
 // print user data
 function CreateObj () {
-  let count = 0;
   return <div>
     {/* <p className="course-name">Course name is {this.props.courseName}</p> */}
     <p className="user-name">UserName:{userData.name ? userData.name : 'Anonymous'}</p>
@@ -52,12 +129,10 @@ function CreateObj () {
     {/* print stream array options */}
     {userData.stream.length > 0 ? userData.stream.map(streamOption => <p>{streamOption}</p>):'No options available'}
     {/* counter + on click */}
-    <h1>Count:{count}</h1>
-    <button id="counter_id" className="button" onClick={addOne}>Click to increase counter</button>
+    {renderCounter()}
+    {OptionForm()}
   </div>;
 }
-
-
 
 //arrow function with split string
 const squareArrow = (x) => x.split(' ')[0] ;

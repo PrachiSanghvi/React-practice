@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+
+.middle-menu a.active_class {
+  color: rgb(34, 80, 141);
+  border-bottom: 1px solid red;
+}
+
+.card-wrapper .card-title  , .card-wrapper .card-text{
+  color: #000;
+}
