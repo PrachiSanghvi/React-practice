@@ -38,7 +38,7 @@ const TODOLIST = () => {
       <div className="main_div">
         <div className="center_div">
           <br/>
-          <h1>TODO List</h1>
+          <h1>TODO LIST</h1>
           <br/>
           <input type="text" placeholder="Add a item" value={inputList} onChange={itemEvets} />
           <button onClick={listOfItems}> + </button>

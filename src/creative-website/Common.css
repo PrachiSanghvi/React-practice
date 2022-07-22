@@ -1,0 +1,43 @@
+.navbar-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.darkmode {
+  background-color: #000;
+}
+.dark-mode-wrapper {
+  margin: auto 0;
+}
+.dark-mode-wrapper .dark-mode-btn {
+  padding: 10px;
+  margin: 10px;
+}
+
+/* Navigation */
+.navigation-wrapper {
+  margin: auto;
+}
+.navigation-wrapper .nav-list {
+  list-style-type: none;
+  display: flex;
+}
+.navigation-wrapper .nav-list .nav-item {
+  padding: 10px;
+}
+.navigation-wrapper .nav-list .nav-item .nav-link {
+  text-decoration: none;
+}
+
+/* Slider */
+
+.slide-container {
+  display: flex;
+}
+.slide-container .prev-btn {
+  height: fit-content;
+  margin: auto 10px;
+}
+.slide-container .next-btn {
+  height: fit-content;
+  margin: auto 10px;
+}
