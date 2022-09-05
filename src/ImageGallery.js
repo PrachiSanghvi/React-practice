@@ -37,8 +37,8 @@ class ImageGallery extends Component {
     return(
       <div className="image-gallery">
         <img src={this.state.picList[this.state.index]} style={{"height":"400px","width":"100%"}} alt="img{this.state.picList[this.state.index]}"></img><br/>
-        <button style={{"fontSize":"18px"}} onClick={this.onClickPrev}>Previous</button>
-        <button style={{"fontSize":"18px","marginLeft":"20px"}} onClick={this.onClickNext}>Next</button>
+        <button style={{fontSize:18}} onClick={this.onClickPrev}>Previous</button>
+        <button style={{fontSize:18,marginLeft:20}} onClick={this.onClickNext}>Next</button>
       </div>
     )
   }

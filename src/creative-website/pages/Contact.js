@@ -1,8 +1,12 @@
 import React from 'react'
-
+import LoginForm from '../component/LoginForm'
+import Logout from '../component/Logout'
 const Contact = () => {
   return (
-    <div>Contact</div>
+    <div className="contact-page-wrapper">
+      <LoginForm />
+      <Logout/>
+    </div>
   )
 }
 

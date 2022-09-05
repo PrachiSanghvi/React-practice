@@ -7,7 +7,7 @@ import './Header.css'
 function leftLogo() {
   return(
     <div className="left-logo">
-      <img src="https://picsum.photos/200" style={{"height":"100px","width":"100px"}} alt="React logo"></img>
+      <img src="https://picsum.photos/200" style={{height:100,width:100}} alt="React logo"></img>
     </div>
   )
 }

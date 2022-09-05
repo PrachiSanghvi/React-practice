@@ -13,6 +13,10 @@ export default class RandomQuote extends Component {
   }
 
   fetchAdvice = () => {
+    // what-is-difference-between-axios-and-fetch
+    // https://stackoverflow.com/questions/40844297/what-is-difference-between-axios-and-fetch
+
+    // Axios, which is a popular library is mainly used to send asynchronous HTTP requests to REST endpoints. This library is very useful to perform CRUD operations
     axios.get('https://api.adviceslip.com/advice').then((response) => {
       const {advice} = response.data.slip;
       this.setState({ advice})

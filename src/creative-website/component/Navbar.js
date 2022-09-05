@@ -1,12 +1,12 @@
 import React ,{useState} from 'react'
 import { Link } from 'react-router-dom';
 import logo from '../assests/logo.png';
-const Navbar = () => {
+const  Navbar = () => {
   const [darkMode,setDarkMode] = useState(false);
   return (
       <div className={`${darkMode && 'darkmode'} navbar-wrapper`}>
         <div className="logo-wrapper">
-          <img src={logo} style={{"height":"100px","width":"100px","padding": "10px"}} alt="Website Logo" />
+          <img src={logo} style={{height:100,width:100,padding: 10}} alt="Website Logo" />
         </div>
         <div className="navigation-wrapper">
           <ul className="nav-list">
