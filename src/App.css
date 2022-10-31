@@ -90,3 +90,12 @@
   color: #fff;
   font-size: 100px;
 }
+
+.bg-dark {
+  background: black;
+  color: #fff;
+}
+.bg-light {
+  background: white;
+  color: #000;
+}

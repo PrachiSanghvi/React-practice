@@ -1,9 +1,13 @@
-import React from 'react'
-import HPCardItem from './HPCardItem'
+import React,{useContext} from 'react'
+import HPCardItem from './HPCardItem';
+import { UserContext } from '../../creative-website/app/userContext';
+
 const HPCollection = () => {
+  const theme = useContext(UserContext);
+  const darkMode = theme.state.darkMode;
   return (
     <>
-      <div className="cards">
+      <div className={`cards ${darkMode ? 'bg-dark' : 'bg-light'}`}>
         <h1>Checkout these EPIC Destination</h1>
         <div className="cards__container">
           <div className="cards__wrapper">

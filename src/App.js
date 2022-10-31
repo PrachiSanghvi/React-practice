@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useContext} from 'react';
 // import DropDown from './DropDown';
 // import ImageGallery from './ImageGallery';
 // import Clock from './Clock';
@@ -39,12 +39,16 @@ import './App.css';
 // import CompleteWebsite from './Practice/CompleteWebsite';
 // import RandomQuote from './Practice/RandomQuote';
 // import ReactNote from './Practice/ReactNote';
-import Homepage from './creative-website/pages/Homepage';
-const { useEffect , useState } = React
+import { UserContext } from './creative-website/app/userContext';
+// import Homepage from './creative-website/pages/Homepage';
+// import ReduxPractice from './Reduxapp/ReduxPractice';
+// import Todo from './ReduxTodo/components/Todo';
+// import ShowUserData from './ReduxTodo/components/showUserData';
+import MyWebsite from './ReactAllConcept/MyWebsite';
 
+const { useEffect , useState } = React;
 const Counter = () =>  {
   const [count, setCount] = useState(0)
-
   useEffect(() => {
     console.log(`you clicked ${count} times`);
   })
@@ -67,8 +71,11 @@ function GoodByeMessage ({myprop}) {
  
 
 function App() {
+  const theme = useContext(UserContext);
+  const darkMode = theme.state.darkMode;
+
   return (
-    <div className="App">
+    <div className={`App ${darkMode ? "bg-dark" : "bg-light"}`}>
       <header className="App-header">
         <div style={{"display":"flex","width":"100%","justifyContent":"space-around"}}>
 
@@ -131,8 +138,14 @@ function App() {
         {/* <div className="container">
           <ReactNote />
         </div> */}
-        <div className="creative-website">
+        {/* <div className="creative-website">
           <Homepage />
+        </div> */}
+        <div className="redux-practice">
+          {/* <ReduxPractice/> */}
+          {/* <Todo /> */}
+          {/* <ShowUserData /> */}
+          <MyWebsite />
         </div>
       </header>
     </div>

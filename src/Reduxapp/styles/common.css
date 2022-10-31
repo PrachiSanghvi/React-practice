@@ -1,0 +1,15 @@
+.redux-practice {
+  text-align: center;
+  margin-top: 30px;
+}
+.redux-practice .quantity .quantity_minus {
+  cursor: pointer;
+}
+.redux-practice .quantity .quantity_plus {
+  cursor: pointer;
+}
+.redux-practice .quantity input.quantity_input {
+  height: 30px;
+  width: 100px;
+  text-align: center;
+}

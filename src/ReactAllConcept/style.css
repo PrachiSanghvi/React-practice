@@ -1,0 +1,28 @@
+.redux-practice header {
+  width: 100%;
+  display: flex;
+}
+
+.redux-practice header a {
+  width: 20%;
+}
+.redux-practice header nav {
+  width: 80%;
+}
+.redux-practice header nav ul {
+  display: inline-flex;
+  list-style: none;
+}
+
+.redux-practice header nav ul li {
+  padding: 10px;
+}
+.redux-practice header nav ul li a{
+  text-decoration: none;
+}
+.redux-practice header nav ul li a:active{
+  color:blueviolet;
+}
+.home-page-wrapper .search-form {
+  padding-top: 8px;
+}

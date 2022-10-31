@@ -1,10 +1,19 @@
-import React ,{useState} from 'react'
+import React ,{ useContext } from 'react'
 import { Link } from 'react-router-dom';
 import logo from '../assests/logo.png';
+import { UserContext } from '../app/userContext';
 const  Navbar = () => {
-  const [darkMode,setDarkMode] = useState(false);
+  const theme = useContext(UserContext)
+  const darkMode = theme.state.darkMode;
+  const setColorMode = () => {
+    if (darkMode) {
+      theme.dispatch({type : "lightmode"})
+    } else {
+      theme.dispatch({type : "darkmode"})
+    }
+  }
   return (
-      <div className={`${darkMode && 'darkmode'} navbar-wrapper`}>
+      <div className={`${darkMode ? 'bg-dark' : 'bg-light'} navbar-wrapper`}>
         <div className="logo-wrapper">
           <img src={logo} style={{height:100,width:100,padding: 10}} alt="Website Logo" />
         </div>
@@ -16,8 +25,8 @@ const  Navbar = () => {
             <li className="nav-item"><Link to="/Contact" className="nav-link">Contact Us</Link></li>
           </ul>
         </div>
-        <div className="dark-mode-wrapper">
-          <button className="dark-mode-btn" onClick={() => setDarkMode(!darkMode)}>Dark mode</button>
+        <div className={`dark-mode-wrapper btn ${darkMode ? "btn-dark" : "btn-light"}`}>
+          <button className="dark-mode-btn" onClick={() => setColorMode()}>Dark mode</button>
         </div>
       </div>
   )
