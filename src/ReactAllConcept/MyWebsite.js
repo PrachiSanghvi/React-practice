@@ -7,7 +7,6 @@ import Contact from './Pages/Contact';
 import Error404 from './Pages/Error404';
 import User from './Pages/User';
 import './style.css';
-
 const MyWebsite = () => {
   return (
     <div>
@@ -17,6 +16,7 @@ const MyWebsite = () => {
           <Route path="About" element={<About/>} />
           <Route path="Contact" element={<Contact/>} />
           <Route path="User" element={<User/>} >
+          {/* react router- link ,dynamic routing */}
             <Route path=":name" element={<User/>} />  
           </Route>
           <Route path="*" element={<Error404/>} />

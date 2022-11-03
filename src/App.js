@@ -39,11 +39,13 @@ import './App.css';
 // import CompleteWebsite from './Practice/CompleteWebsite';
 // import RandomQuote from './Practice/RandomQuote';
 // import ReactNote from './Practice/ReactNote';
-import { UserContext } from './creative-website/app/userContext';
+import { darkModeContext } from './ReactAllConcept/useContext';
+// import { UserContext } from './creative-website/app/userContext';
 // import Homepage from './creative-website/pages/Homepage';
 // import ReduxPractice from './Reduxapp/ReduxPractice';
 // import Todo from './ReduxTodo/components/Todo';
 // import ShowUserData from './ReduxTodo/components/showUserData';
+// import UserData from './ReactAllConcept/components/UserData';
 import MyWebsite from './ReactAllConcept/MyWebsite';
 
 const { useEffect , useState } = React;
@@ -71,7 +73,8 @@ function GoodByeMessage ({myprop}) {
  
 
 function App() {
-  const theme = useContext(UserContext);
+  // const theme = useContext(UserContext);
+  const theme = useContext(darkModeContext);
   const darkMode = theme.state.darkMode;
 
   return (

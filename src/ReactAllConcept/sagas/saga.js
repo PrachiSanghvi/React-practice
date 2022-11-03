@@ -1,17 +1,22 @@
-import { takeEvery,call,put } from "@redux-saga/core/effects";
-import { GET_USERS_FETCH, GET_USERS_SUCCESS } from "../../ReduxTodo/actions";
-
-function userFetch() {
-  return fetch('https://jsonplaceholder.typicode.com/users').then(response => response.json());
+import { takeEvery, call, put } from 'redux-saga/effects';
+import { GET_MY_USERS_FETCH, GET_MY_USERS_SUCCESS } from "../actions/index";
+import axios from 'axios'
+function myUserFetch() {
+  // return fetch('https://jsonplaceholder.typicode.com/users').then(response => response.json());
+  return axios.get('https://jsonplaceholder.typicode.com/users').then((response) => {
+     return response.data
+  }).catch((error) => {
+    console.log(error);
+  })
 }
 
-function* workGetUserFetch() {
-  const users = yield call(userFetch);
-  yield put({ type: GET_USERS_SUCCESS , users });
+function* workGetMyUserFetch() {
+  const users = yield call(myUserFetch);
+  yield put({ type: GET_MY_USERS_SUCCESS , users });
 }
 
 function* myWebsiteSaga() {
-  yield takeEvery(GET_USERS_FETCH , workGetUserFetch);
+  yield takeEvery(GET_MY_USERS_FETCH , workGetMyUserFetch);
 }
 
 export default myWebsiteSaga;

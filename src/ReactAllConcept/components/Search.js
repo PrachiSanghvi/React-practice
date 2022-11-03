@@ -1,34 +1,42 @@
-import React from 'react';
-import {useState,useEffect} from 'react';
-import UserData from './UserData';
+import React, { useState, useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from "react-redux"
+import { getMyUsersFetch, searchUsersFetch } from "../actions/index";
+
 const Search = () => {
-
-  const [results, setResult] = useState([]);
-  const [searchData,setSearchData] = useState([]);
-  const [flag,setFlag] = useState(false);
-
-  const getUserListData = () => {
-    fetch("https://randomuser.me/api/?results=5").then(result => result.json()).then(data => setResult(data.results))
-  }
+  // search for result - hooks
+  const [search, setSearch] = useState("");
+  const dispatch = useDispatch();
+  const users = useSelector(state => state.getUserDataReducer.users);
+  const isMounted = useRef(false);
+  const timerRef = useRef(null);
 
   useEffect(() => {
-    getUserListData();
-  },[])
+    if (!isMounted.current) {
+      isMounted.current = true;
+      return;
+    }
+    /* Debouncing effect */
+    clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      let resultData = users.filter(obj => obj?.name?.toLowerCase().includes(search.toLowerCase()))
+      dispatch(searchUsersFetch(resultData))
+    }, 2000);
+  }, [search])
 
-  const userData = flag ? searchData:results;
+
+  useEffect(() => {
+    dispatch(getMyUsersFetch())
+  }, [])
+
   return (
     <>
       <form className="search-form">
-        <input className="search-input" type="text" placeholder="Search here" />
-        <button typ="submit"></button>
+        <input className="search-input" type="text" placeholder="Search here" onChange={(e) => {
+          setSearch(e.target.value)
+        }} />
       </form>
-      {userData.length ? userData.map((contactDetail,index) => {
-        return(
-          <UserData />
-        )
-      }): "No data found"}
     </>
   )
 }
 
-export default Search
+export default Search;

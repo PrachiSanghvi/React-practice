@@ -7,24 +7,27 @@ import { Provider } from 'react-redux';
 // import store from './Reduxapp/store';
 // import store from './ReduxTodo/store'
 // import store from './creative-website/app/store';
-import { ThemeProvider } from './creative-website/app/userContext';
+// import { ThemeProvider } from './creative-website/app/userContext';
+import { ThemeProvider } from './ReactAllConcept/useContext';
 
 import { configureStore } from "@reduxjs/toolkit";
 // import { applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import reducer from "./ReduxTodo/reducers/index";
-import mySaga from "./ReduxTodo/sagas/saga";
+// import reducer from "./ReduxTodo/reducers/index";
+// import mySaga from "./ReduxTodo/sagas/saga";
+
+import myReducer from './ReactAllConcept/reducers/index';
 import myWebsiteSaga from './ReactAllConcept/sagas/saga';
 
 const sagaMiddleware = createSagaMiddleware();
-const store = configureStore({reducer,
+const store = configureStore({reducer : myReducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware)});
 
 // sagaMiddleware.run(mySaga);
 sagaMiddleware.run(myWebsiteSaga);
 const rootDiv = document.getElementById('root');
 
-store.subscribe(() => console.log(store.getState()))
+store.subscribe(() => console.log("store state",store.getState()))
 ReactDOM.render(
   <BrowserRouter>
     <ThemeProvider>
