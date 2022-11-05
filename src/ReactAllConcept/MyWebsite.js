@@ -6,22 +6,31 @@ import About from './Pages/About';
 import Contact from './Pages/Contact';
 import Error404 from './Pages/Error404';
 import User from './Pages/User';
+import PrivateRoute from './components/PrivateRoute';
 import './style.css';
 const MyWebsite = () => {
   return (
     <div>
       <Routes>
         {/* Nested Routing */}
-        <Route path="/" element={<Home/>}>
-          <Route path="About" element={<About/>} />
-          <Route path="Contact" element={<Contact/>} />
-          <Route path="User" element={<User/>} >
-          {/* react router- link ,dynamic routing */}
-            <Route path=":name" element={<User/>} />  
+        <Route path="/" element={<Home />}>
+          <Route path="About" element={<About />} />
+          <Route path="Contact" element={<Contact />} />
+
+          <Route element={<PrivateRoute />}>
+            <Route path='User' element={<User />} >
+              {/* react router- link ,dynamic routing */}
+              <Route path=":name" element={<User />} />
+            </Route>
           </Route>
-          <Route path="*" element={<Error404/>} />
+
+          <Route path="*" element={<Error404 />} />
           {/* Index Route */}
-          <Route index element={<UserData/>} />
+
+          <Route element={<PrivateRoute />}>
+            <Route index element={<UserData />} >
+            </Route>
+          </Route>
         </Route>
       </Routes>
     </div>

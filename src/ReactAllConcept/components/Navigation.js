@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import Search from './Search';
 import DarkMode from './DarkMode';
+import LoginBtn from './LoginBtn';
+import { isLogin } from './loginCredential';
 // Add context api-dark mode,
 const Navigation = () => {
+  const [isLogedin, setIsLogedin] = useState(isLogin());
+
   return (
     <div>
       <header>
@@ -13,11 +17,10 @@ const Navigation = () => {
             <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to="/About">About</NavLink></li>
             <li><NavLink to="/Contact">Contact</NavLink></li>
-            <li><NavLink to="/User">User</NavLink></li>
-            {/* <li><NavLink to="/User/prachi">Prachi</NavLink></li> */}
-            {/* <li><NavLink to="/User/prakruti">Prakruti</NavLink></li> */}
-            <Search/>
+            {isLogedin && <li><NavLink to="/User">User</NavLink></li>}
+            {isLogedin && <Search/>}       
             <DarkMode/>
+            <LoginBtn/>
           </ul>
         </nav>
       </header>

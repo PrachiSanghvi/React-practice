@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 
-
 const UserData = () => {
   const users = useSelector(state => state.getUserDataReducer.users);
   const searchedData = useSelector(state => state.getUserDataReducer.searchedData);
