@@ -17,14 +17,15 @@ import createSagaMiddleware from 'redux-saga';
 // import mySaga from "./ReduxTodo/sagas/saga";
 
 import myReducer from './ReactAllConcept/reducers/index';
-import myWebsiteSaga from './ReactAllConcept/sagas/saga';
+// import myWebsiteSaga from './ReactAllConcept/sagas/saga';
+import rootSaga from './ReactAllConcept/sagas/rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = configureStore({reducer : myReducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware)});
 
 // sagaMiddleware.run(mySaga);
-sagaMiddleware.run(myWebsiteSaga);
+sagaMiddleware.run(rootSaga);
 const rootDiv = document.getElementById('root');
 
 store.subscribe(() => console.log("store state",store.getState()))

@@ -1,8 +1,7 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 import { GET_MY_USERS_FETCH, GET_MY_USERS_SUCCESS } from "../actions/index";
-import axios from 'axios'
+import axios from 'axios';
 function myUserFetch() {
-  // return fetch('https://jsonplaceholder.typicode.com/users').then(response => response.json());
   return axios.get('https://jsonplaceholder.typicode.com/users').then((response) => {
      return response.data
   }).catch((error) => {

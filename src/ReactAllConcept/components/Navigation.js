@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Search from './Search';
 import DarkMode from './DarkMode';
 import LoginBtn from './LoginBtn';
-import { isLogin } from './loginCredential';
+import { useSelector } from 'react-redux';
 // Add context api-dark mode,
 const Navigation = () => {
-  const [isLogedin, setIsLogedin] = useState(isLogin());
+  const isLoginUser = useSelector(state => state.checkForLoggedInUser.UserLoggedin);
 
   return (
     <div>
@@ -17,8 +17,8 @@ const Navigation = () => {
             <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to="/About">About</NavLink></li>
             <li><NavLink to="/Contact">Contact</NavLink></li>
-            {isLogedin && <li><NavLink to="/User">User</NavLink></li>}
-            {isLogedin && <Search/>}       
+            {isLoginUser && <li><NavLink to="/User">User</NavLink></li>}
+            {isLoginUser && <Search/>}       
             <DarkMode/>
             <LoginBtn/>
           </ul>

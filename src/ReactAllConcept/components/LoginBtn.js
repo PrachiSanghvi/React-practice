@@ -1,19 +1,21 @@
-import React, { useState } from 'react'
-import { login, logout, isLogin } from './loginCredential';
+import React from 'react'
+import { login, logout } from './loginCredential';
+import { useDispatch, useSelector } from 'react-redux';
+import { UserLoggedIn } from '../actions';
 const LoginBtn = () => {
-  const [isLogedin, setIsLogedin] = useState(isLogin());
-
+  const isLoginUser = useSelector(state => state.checkForLoggedInUser.UserLoggedin);
+  const dispatch  = useDispatch()
   const handleLogout = () => {
     logout();
-    setIsLogedin(false);
+    dispatch(UserLoggedIn(false))
   }
   const handleLogin = () => {
     login();
-    setIsLogedin(true);
+    dispatch(UserLoggedIn(true))
   }
   return (
     <>
-      {isLogedin ? <button onClick={() => handleLogout()}>LogOut</button> : <button onClick={() => handleLogin()}>Login</button>}
+      {isLoginUser ? <button onClick={() => handleLogout()}>LogOut</button> : <button onClick={() => handleLogin()}>Login</button>}
     </>
   )
 }
