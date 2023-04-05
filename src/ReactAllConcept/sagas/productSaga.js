@@ -1,4 +1,4 @@
-import { takeEvery, call, put } from "@redux-saga/core/effects";
+import { takeEvery, call, put } from "redux-saga/effects";
 import { GET_PRODUCT_FETCH, GET_PRODUCT_FETCH_SUCCESS } from "../actions/productAction";
 import axios from "axios";
 function myProductFetch() {
@@ -9,8 +9,8 @@ function myProductFetch() {
   });
 }
 function* workGetMyProductFetch() {
-  const productData = yield call(myProductFetch)
-  yield put({ type: GET_PRODUCT_FETCH_SUCCESS, productData })
+  const products = yield call(myProductFetch);
+  yield put({ type: GET_PRODUCT_FETCH_SUCCESS, products })
 }
 function* productSaga() {
   yield takeEvery(GET_PRODUCT_FETCH, workGetMyProductFetch)

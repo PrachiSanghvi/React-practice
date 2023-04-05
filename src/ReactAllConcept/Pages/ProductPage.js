@@ -1,17 +1,11 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { getProductFetch } from '../actions/productAction';
+import React from 'react'
+// import store from '../../index'
 const ProductPage = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProductFetch())
-  }, [])
-  const productData = useSelector((state={}) => state?.getProductDataReducer?.product)
-
-  debugger;
+  // const state = store.getState();
+  // let ProductsData = 
   return (
     <div>
-      <div>{productData}</div>
+      helo
     </div>
   )
 }

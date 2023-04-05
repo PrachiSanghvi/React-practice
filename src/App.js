@@ -47,7 +47,8 @@ import { darkModeContext } from './ReactAllConcept/useContext';
 // import ShowUserData from './ReduxTodo/components/showUserData';
 // import UserData from './ReactAllConcept/components/UserData';
 import MyWebsite from './ReactAllConcept/MyWebsite';
-
+import UseReduce from './ReactAllConcept/UseReduce';
+import UseRefEx from './ReactAllConcept/UseRefEx';
 const { useEffect , useState } = React;
 const Counter = () =>  {
   const [count, setCount] = useState(0)
@@ -148,7 +149,9 @@ function App() {
           {/* <ReduxPractice/> */}
           {/* <Todo /> */}
           {/* <ShowUserData /> */}
-          <MyWebsite />
+          {/* <MyWebsite /> */}
+          {/* <UseReduce /> */}
+          <UseRefEx />
         </div>
       </header>
     </div>

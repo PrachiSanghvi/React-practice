@@ -5,14 +5,16 @@ import Home from './Pages/Home';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
 import Error404 from './Pages/Error404';
+import ProductPage from './Pages/ProductPage';
+import Cart from './Pages/Cart';
 import User from './Pages/User';
 import LoginPage from './Pages/LoginPage'
 import PrivateRoute from './components/PrivateRoute';
 import { isLogin } from './components/loginCredential';
 import { useDispatch } from 'react-redux';
+import CollectionPage from './Pages/CollectionPage';
 import { UserLoggedIn } from './actions';
 import './style.css';
-// import LoginPage from './Pages/LoginPage';
 
 
 const MyWebsite = () => {
@@ -33,7 +35,9 @@ const MyWebsite = () => {
         <Route path="/" element={<Home />}>
           <Route path="About" element={<About />} />
           <Route path="Contact" element={<Contact />} />
-
+          <Route path="Product" element={<ProductPage />} />
+          <Route path="Collection" element={<CollectionPage />} />
+          <Route path="Cart" element={<Cart />} />
           <Route element={<PrivateRoute />}>
             <Route path='User' element={<User />} >
               {/* react router- link ,dynamic routing */}
