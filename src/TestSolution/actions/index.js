@@ -7,9 +7,9 @@ export const addEmployeeData = (payload) => ({
 })
 
 export const editEmployeeData = (payload) => ({
-  type : EDIT_EMPLOYEE_DATA, payload
+  type: EDIT_EMPLOYEE_DATA, payload
 })
 
 export const deleteEmployeeData = (payload) => ({
-  type : DELETE_EMPLOYEE_DATA,payload
+  type: DELETE_EMPLOYEE_DATA, payload
 })

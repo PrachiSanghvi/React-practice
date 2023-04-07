@@ -16,7 +16,7 @@ const ShowEmployeeList = () => {
     <div className="show-employee-list">
       <h1 className="employee-list-title">Employee List</h1>
       <input type="text" placeholder="search here..." />
-      {empData.map((emp,i) => {
+      {empData.map((emp, i) => {
         return (
           <div className="list-wrapper" key={i}>
             <span className="list-data">{emp.firstName}</span>

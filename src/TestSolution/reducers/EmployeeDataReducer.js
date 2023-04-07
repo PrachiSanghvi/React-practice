@@ -1,17 +1,18 @@
-import { ADD_EMPLOYEE_DATA,EDIT_EMPLOYEE_DATA,DELETE_EMPLOYEE_DATA } from "../actions";
+import { ADD_EMPLOYEE_DATA, EDIT_EMPLOYEE_DATA, DELETE_EMPLOYEE_DATA } from "../actions";
 
-const initialState = { list: []
+const initialState = {
+  list: []
 }
 
 export const FetchEmployeeDetail = (state = initialState, action) => {
   switch (action.type) {
     case ADD_EMPLOYEE_DATA:
-      const { eId ,firstName, lastName, salary, dob, department } = action.payload;
+      const { eId, firstName, lastName, salary, dob, department } = action.payload;
       return {
         ...state,
         list: [
           ...state.list, {
-            eId : eId,
+            eId: eId,
             firstName: firstName,
             lastName: lastName,
             salary: salary,
@@ -33,7 +34,7 @@ export const FetchEmployeeDetail = (state = initialState, action) => {
           }
         ]
       }
-    case DELETE_EMPLOYEE_DATA : 
+    case DELETE_EMPLOYEE_DATA:
       return {
         ...state,
         list: []

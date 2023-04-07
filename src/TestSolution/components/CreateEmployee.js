@@ -10,14 +10,14 @@ const CreateEmployee = () => {
   const empData = useSelector(state => state.FetchEmployeeDetail.list)
 
   const initialValues = {
-    eId : 0,
+    eId: 0,
     firstName: "",
     lastName: "",
     dob: "",
     salary: "",
     department: ""
   };
-  
+
   const {
     values,
     errors,
@@ -108,7 +108,7 @@ const CreateEmployee = () => {
               {DepartmentList.length > 0
                 && DepartmentList.map((item, i) => {
                   return (
-                    <option key={item.value+i} value={item.value} name={item.name}>{item.name}</option>
+                    <option key={item.value + i} value={item.value} name={item.name}>{item.name}</option>
                   )
                 })}
             </select>
