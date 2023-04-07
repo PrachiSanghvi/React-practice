@@ -1,5 +1,4 @@
 export const ajaxCart = async (url, data) => {
-  debugger;
   try {
     let res = await fetch(url, {
       method: "POST",
@@ -10,7 +9,6 @@ export const ajaxCart = async (url, data) => {
       body: JSON.stringify(data)
     })
     res = await res.json();
-    debugger;
     return res;
   } catch (e) {
     console.log(e);

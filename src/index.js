@@ -16,27 +16,29 @@ import createSagaMiddleware from 'redux-saga';
 // import reducer from "./ReduxTodo/reducers/index";
 // import mySaga from "./ReduxTodo/sagas/saga";
 
-import myReducer from './ReactAllConcept/reducers/index';
+// import myReducer from './ReactAllConcept/reducers/index';
 // import myWebsiteSaga from './ReactAllConcept/sagas/saga';
-import rootSaga from './ReactAllConcept/sagas/rootSaga';
-import Client from 'shopify-buy';
+// import rootSaga from './ReactAllConcept/sagas/rootSaga';
+// import Client from 'shopify-buy';
+
+import empReducer from './TestSolution/reducers';
 
 // build shopify client
-const client = Client.buildClient({
-  storefrontAccessToken: 'f0090d45803c0cf58b7bff7761a9465d',
-  domain: 'lucent-theme-2.myshopify.com'
-});
+// const client = Client.buildClient({
+//   storefrontAccessToken: 'f0090d45803c0cf58b7bff7761a9465d',
+//   domain: 'lucent-theme-2.myshopify.com'
+// });
 
 const sagaMiddleware = createSagaMiddleware();
-export const store = configureStore({reducer : myReducer,
+export const store = configureStore({reducer : empReducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware)});
 
-client.product.fetchAll().then((res) => {
-  store.dispatch({type: 'PRODUCTS_FOUND', payload: res});
-});
+// client.product.fetchAll().then((res) => {
+//   store.dispatch({type: 'PRODUCTS_FOUND', payload: res});
+// });
 
 // sagaMiddleware.run(mySaga);
-sagaMiddleware.run(rootSaga);
+// sagaMiddleware.run(rootSaga);
 const rootDiv = document.getElementById('root');
 
 

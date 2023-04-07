@@ -46,9 +46,11 @@ import { darkModeContext } from './ReactAllConcept/useContext';
 // import Todo from './ReduxTodo/components/Todo';
 // import ShowUserData from './ReduxTodo/components/showUserData';
 // import UserData from './ReactAllConcept/components/UserData';
-import MyWebsite from './ReactAllConcept/MyWebsite';
-import UseReduce from './ReactAllConcept/UseReduce';
-import UseRefEx from './ReactAllConcept/UseRefEx';
+// import MyWebsite from './ReactAllConcept/MyWebsite';
+// import UseReduce from './ReactAllConcept/UseReduce';
+// import UseRefEx from './ReactAllConcept/UseRefEx';
+import EmployeeDepart from './TestSolution/EmployeeDepart';
+
 const { useEffect , useState } = React;
 const Counter = () =>  {
   const [count, setCount] = useState(0)
@@ -151,7 +153,8 @@ function App() {
           {/* <ShowUserData /> */}
           {/* <MyWebsite /> */}
           {/* <UseReduce /> */}
-          <UseRefEx />
+          {/* <UseRefEx /> */}
+          <EmployeeDepart />
         </div>
       </header>
     </div>
