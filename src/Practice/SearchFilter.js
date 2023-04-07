@@ -10,7 +10,7 @@ const SearchFilter = () => {
       {JsonData.filter((val) => {
         if (searchTerm == '') {
           return val
-        } else if (val.first_name.toLowerCase().includes(searchTerm.toLowerCase())) {
+        } else if (val.first_name.toLowerCase().includes(searchTerm?.toLowerCase())) {
           return val
         }
       }).map((val,ind) => {

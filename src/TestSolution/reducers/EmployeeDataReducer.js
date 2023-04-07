@@ -7,37 +7,30 @@ const initialState = {
 export const FetchEmployeeDetail = (state = initialState, action) => {
   switch (action.type) {
     case ADD_EMPLOYEE_DATA:
-      const { eId, firstName, lastName, salary, dob, department } = action.payload;
       return {
         ...state,
         list: [
           ...state.list, {
-            eId: eId,
-            firstName: firstName,
-            lastName: lastName,
-            salary: salary,
-            dob: dob,
-            department: department
+            ...action.payload
           }
         ]
       }
     case EDIT_EMPLOYEE_DATA:
-      return {
+      return{
         ...state,
-        list: [
-          ...state.list, {
-            firstName: firstName,
-            lastName: lastName,
-            salary: salary,
-            dob: dob,
-            department: department
+        list: state.list.map((emp)=> {
+          if(+emp.eId === +action.payload.eId) {
+            return {...action.payload}
+          } else {
+            return emp
+
           }
-        ]
-      }
+        })
+    }
     case DELETE_EMPLOYEE_DATA:
       return {
         ...state,
-        list: []
+        list: state.list.filter(l => l.eId !== action.payload)
       }
     default:
       return state;
