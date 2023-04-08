@@ -26,8 +26,27 @@ should save to database/redux-store and new row will generate for new department
 
 https://www.digitalocean.com/community/tutorials/managing-form-state-in-react-with-redux-form
 
-1) create files
-2) create employee form => submit data => store data => add validation of form
-3) EmployeeList data with edit , delete , search in data
 
-4) create department list -> add ,delete => add validation in form
+Worked comments
+--------------------
+Formik used for creating and handling data
+Yup used for error handling in schemas/index.js
+Material UI used for UI elements (forms , fields)
+Redux used for global data storage and access
+
+
+Screenshot attached of created forms/printed data
+---------------------------------------------------
+Create employee - https://prnt.sc/qLY3MZ3Z9AFh
+EmployeeList - https://prnt.sc/NhR4VBGmLcBS
+No record found(ON search) - https://prnt.sc/3AxWawPJ0fhY
+Edit employee data - https://prnt.sc/Seretpo0xJoO
+Create Department  - https://prnt.sc/9GRMFo9Va2IN
+Validation while Create Department - https://prnt.sc/DZdcEsdw12Ac
+DepartmentList - https://prnt.sc/rB_YsPeljYQP
+
+References:
+
+// https://mui.com/system/spacing/#api
+// https://mui.com/material-ui/react-grid/
+// https://www.copycat.dev/blog/material-ui-table/

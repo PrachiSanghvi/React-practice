@@ -7,6 +7,10 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar'
 import HomePage from './components/HomePage'
 import ShowDepartmentList from './components/ShowDepartmentList'
+
+// Main file which is called in app.js
+// Created Route , based on url => data will show.
+
 const EmployeeDepart = () => {
   return (
     <div>

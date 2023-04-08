@@ -13,45 +13,66 @@ import { useNavigate } from 'react-router';
 import './style.css'
 import { deleteEmployeeData } from '../actions';
 import { TextField, IconButton } from '@material-ui/core';
-
+import { Typography } from '@mui/material';
 import { SearchOutlined } from '@material-ui/icons';
+import { makeStyles } from "@material-ui/core/styles";
 
-// https://www.copycat.dev/blog/material-ui-table/
+// Using makeStyle for styling form field using mui
+// Updating,Deleting,searching data in employee list
+// Redirecting to other page using useNavigate
+// Using MUI table for listing emp data
+
+const useStyles = makeStyles((theme) => ({
+  typo: {
+    flexGrow: 1,
+    textAlign: "center"
+  }
+}))
 
 const ShowEmployeeList = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const classes = useStyles();
+
+  // Getting Employee Data from reducer
   const empData = useSelector(state => state.FetchEmployeeDetail.list)
 
- //on submit data get in this object
- const [searchData,setSearchData] = useState([]);
+  //on submit data get in this object
+  const [searchData, setSearchData] = useState([]);
 
- //flag for data found or not
- const [flag, setflag]= useState(false);
+  //flag for data found or not
+  const [flag, setflag] = useState(false);
 
-  const navigate = useNavigate();
+  // On edit employee click , we are route to edit employee page with dynamic employee id
   const editEmployee = (id) => {
     navigate(`/editEmployee/${id}`)
   }
-  const dispatch = useDispatch();
 
+  // Delete Employee dispatch event by sending Employee id in action
   const deleteEmployee = (id) => {
     dispatch(deleteEmployeeData(id))
   }
 
+  // Search Employee data
   const handleChange = (e) => {
+    // if search textfield is emply then so default data
     if (e.target.value === '') {
       setflag(false);
     } else {
-      let temp  = e.target.value;
+      // checking for search data in employee stored data
+      let temp = e.target.value;
       let resultData = empData.filter(obj => obj.firstName.toLowerCase().includes(temp.toLowerCase()))
       setSearchData(resultData);
       setflag(true);
     }
   }
+
+  // flag = true if search data found in list
   const empList = flag ? searchData : empData;
 
   return (
     <div className="show-employee-list">
-      <h1 className="employee-list-title">Employee List</h1>
+      <Typography sx={{ pt: 4, pb: 4 }} align="center" variant="h5">Employee List</Typography>
       <TextField
         id="standard-bare"
         variant="outlined"
@@ -88,7 +109,7 @@ const ShowEmployeeList = () => {
                 <TableCell align="right"><DeleteIcon onClick={() => deleteEmployee(row.eId)} /></TableCell>
                 <TableCell align="right"><EditIcon onClick={() => editEmployee(row.eId)} /></TableCell>
               </TableRow>
-            )) : "No records found" }
+            )) : <Typography textAlign="center" className={classes.typo} variant="h5">No record found</Typography>}
           </TableBody>
         </Table>
       </TableContainer>

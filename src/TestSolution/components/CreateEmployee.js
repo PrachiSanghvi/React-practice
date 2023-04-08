@@ -6,8 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { TextField, Button, Select, MenuItem } from "@mui/material";
 import { Grid, Typography } from '@mui/material';
 import { useNavigate } from 'react-router';
-// https://mui.com/system/spacing/#api
-// https://mui.com/material-ui/react-grid/
+
+// Employee signup form - view - https://prnt.sc/qLY3MZ3Z9AFh
+//  Formik used for creating and handling data
+// Yup used for error handling in schemas/index.js
+// Material UI used for UI elements (forms , fields)
+// Redux used for global data storage and access
 
 const CreateEmployee = () => {
   const dispatch = useDispatch();
@@ -15,6 +19,7 @@ const CreateEmployee = () => {
   const DepartmentList = useSelector(state => state.DepartmentList.departmentData)
   const empData = useSelector(state => state.FetchEmployeeDetail.list)
 
+  // Default values of employee form field
   const initialValues = {
     eId: 0,
     firstName: "",
@@ -36,8 +41,10 @@ const CreateEmployee = () => {
     initialValues: initialValues,
     validationSchema: empFormSchema,
     onSubmit: (values) => {
+      // On add employee form submit adding eid in emp object
       values.eId = empData.length + 1
       dispatch(addEmployeeData(values))
+      // after adding emp data in emp list ,redirect to empList page and reseting emp form
       navigate('/empList')
       resetForm();
     }
@@ -92,7 +99,7 @@ const CreateEmployee = () => {
               sx={{ mb: 1 }}
               value={values.dob}
               error={errors?.dob}
-              style = {{width: 250}}
+              style={{ width: 250 }}
             />
             {errors?.dob && touched?.dob && (
               <p style={{ color: "red" }}> {errors?.dob}</p>
@@ -118,11 +125,12 @@ const CreateEmployee = () => {
               name="department"
               onChange={handleChange}
               error={errors?.department}
-              style = {{width: 250}}
+              style={{ width: 250 }}
             >
-             <MenuItem value="">
+              <MenuItem value="">
                 <em>Choose a Department</em>
               </MenuItem>
+              {/* DepartmentList coming from departmentDataReducer */}
               {DepartmentList.length > 0
                 ? DepartmentList.map((model, index) => (
                   <MenuItem key={index} value={model.departmentDetail} name={model.departmentName}>{model.departmentName}</MenuItem>
@@ -133,7 +141,7 @@ const CreateEmployee = () => {
             {errors?.department && touched?.department && (
               <p style={{ color: "red" }}> {errors?.department}</p>
             )}
-            <Button style = {{width: 250}} sx={{ mt: 4 }} type="submit" variant="outlined" color="secondary">
+            <Button style={{ width: 250 }} sx={{ mt: 4 }} type="submit" variant="outlined" color="secondary">
               submit
             </Button>
           </Grid>

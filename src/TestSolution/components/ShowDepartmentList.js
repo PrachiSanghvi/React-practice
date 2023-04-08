@@ -12,13 +12,16 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteDepartmentData } from '../actions';
 import './style.css'
 
-// https://www.copycat.dev/blog/material-ui-table/
+// Showing Department list by MUI table and redux stored data
+// Delete Department functionality
 
 const ShowDepartmentList = () => {
+  // Getting Department Data from reducer
   const DepartmentList = useSelector(state => state.DepartmentList.departmentData)
   const dispatch = useDispatch();
 
   const deleteDepartment = (id) => {
+    // Delete department dispatch event by sending department id in action
     dispatch(deleteDepartmentData(id))
   }
   return (

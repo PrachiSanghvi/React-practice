@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import { departmentFormSchema } from "../schemas";
 import { addDepartmentData } from "../actions";
@@ -6,14 +6,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { TextField, Button } from "@mui/material";
 import { Grid, Typography } from '@mui/material';
 import { useNavigate } from 'react-router';
-// https://mui.com/system/spacing/#api
-// https://mui.com/material-ui/react-grid/
+
+// Creating add Department form using Mui and useFormik
+// Validating for required and department already exist or not
 
 const CreateDepartment = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [dataExist, setDataExist] = useState(false)
+
+  // Getting Department Data from reducer
   const DepartmentList = useSelector(state => state.DepartmentList.departmentData)
 
+  // Initalizing department values
   const initialValues = {
     dId : 0,
     departmentName: "",
@@ -31,9 +36,22 @@ const CreateDepartment = () => {
     initialValues: initialValues,
     validationSchema: departmentFormSchema,
     onSubmit: (values) => {
-      values.dId = DepartmentList.length + 1;
-      dispatch(addDepartmentData(values))
-      navigate('/departmentList')
+      // On submit add department form checking for department already exist or not.
+      // if exist then will not add into list , will just showing error msg
+
+      let data = DepartmentList.filter(dl => {
+        return dl.departmentName === values.departmentName
+      })
+      
+      if(data.length === 0) {
+        // if added department name not exist
+        values.dId = DepartmentList.length + 1;
+        dispatch(addDepartmentData(values))
+        navigate('/departmentList')
+      } else {
+        // if added department name already exist
+        setDataExist(true)
+      }
     }
   });
 
@@ -78,6 +96,7 @@ const CreateDepartment = () => {
             <Button style = {{width: 250}} sx={{ mt: 4 }} type="submit" variant="outlined" color="secondary">
               submit
             </Button>
+            {dataExist && <p style={{ color: "red" }}>Department already exist</p>}
           </Grid>
         </form>
       </div>
