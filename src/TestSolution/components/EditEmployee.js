@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TextField, Button, Select, MenuItem } from "@mui/material";
 import { Grid, Typography } from '@mui/material';
 import { useParams } from "react-router";
-import { formSchema } from "../schemas";
+import { empFormSchema } from "../schemas";
 import { useNavigate } from 'react-router';
 
 const EditEmployee = () => {
@@ -34,7 +34,7 @@ const EditEmployee = () => {
     handleSubmit
   } = useFormik({
     initialValues: initialValues,
-    validationSchema: formSchema,
+    validationSchema: empFormSchema,
     onSubmit: (values) => {
       dispatch(editEmployeeData(values))
       navigate('/empList')
@@ -44,7 +44,7 @@ const EditEmployee = () => {
   return (
     <div>
     <div className="container">
-      <Typography sx={{ pt: 4 }} align="center" variant="h4">Employee Signup form</Typography>
+      <Typography sx={{ pt: 4 }} align="center" variant="h4">Edit Employee form</Typography>
 
       <form onSubmit={handleSubmit}>
         <Grid sx={{ p: 4 }} container alignItems="center" justify="center" direction="column"
@@ -112,6 +112,7 @@ const EditEmployee = () => {
           )}
           <Select
             value={values.department}
+            displayEmpty
             name="department"
             onChange={handleChange}
             error={errors?.department}
@@ -122,7 +123,7 @@ const EditEmployee = () => {
             </MenuItem>
             {DepartmentList.length > 0
               ? DepartmentList.map((model, index) => (
-                <MenuItem key={index} value={model.value} name={model.name}>{model.name}</MenuItem>
+                <MenuItem key={index} value={model.departmentDetail} name={model.departmentName}>{model.departmentName}</MenuItem>
               ))
               : null
             }

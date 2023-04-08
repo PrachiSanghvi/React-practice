@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-import { formSchema } from "../schemas";
+import { empFormSchema } from "../schemas";
 import { addEmployeeData } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
 import { TextField, Button, Select, MenuItem } from "@mui/material";
@@ -34,7 +34,7 @@ const CreateEmployee = () => {
     handleSubmit
   } = useFormik({
     initialValues: initialValues,
-    validationSchema: formSchema,
+    validationSchema: empFormSchema,
     onSubmit: (values) => {
       values.eId = empData.length + 1
       dispatch(addEmployeeData(values))
@@ -114,17 +114,18 @@ const CreateEmployee = () => {
             )}
             <Select
               value={values.department}
+              displayEmpty
               name="department"
               onChange={handleChange}
               error={errors?.department}
               style = {{width: 250}}
             >
-              <MenuItem value="">
+             <MenuItem value="">
                 <em>Choose a Department</em>
               </MenuItem>
               {DepartmentList.length > 0
                 ? DepartmentList.map((model, index) => (
-                  <MenuItem key={index} value={model.value} name={model.name}>{model.name}</MenuItem>
+                  <MenuItem key={index} value={model.departmentDetail} name={model.departmentName}>{model.departmentName}</MenuItem>
                 ))
                 : null
               }

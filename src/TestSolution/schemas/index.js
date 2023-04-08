@@ -10,10 +10,14 @@ function parseDateString(value, originalValue) {
   return parsedDate;
 }
 
-
-export const formSchema = Yup.object({
+export const empFormSchema = Yup.object({
   firstName: Yup.string().min(3).max(25).required(),
   lastName: Yup.string().min(3).max(25).required(),
   salary: Yup.number().required(),
   dob: Yup.date().transform(parseDateString).max(today).required(),
+})
+
+export const departmentFormSchema = Yup.object({
+  departmentName: Yup.string().min(3).max(25).required(),
+  departmentDetail: Yup.string().min(3).max(25).required(),
 })

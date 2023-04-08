@@ -21,6 +21,12 @@ import { SearchOutlined } from '@material-ui/icons';
 const ShowEmployeeList = () => {
   const empData = useSelector(state => state.FetchEmployeeDetail.list)
 
+ //on submit data get in this object
+ const [searchData,setSearchData] = useState([]);
+
+ //flag for data found or not
+ const [flag, setflag]= useState(false);
+
   const navigate = useNavigate();
   const editEmployee = (id) => {
     navigate(`/editEmployee/${id}`)
@@ -31,7 +37,17 @@ const ShowEmployeeList = () => {
     dispatch(deleteEmployeeData(id))
   }
 
-  const [searchResult, setSearchResult] = useState();
+  const handleChange = (e) => {
+    if (e.target.value === '') {
+      setflag(false);
+    } else {
+      let temp  = e.target.value;
+      let resultData = empData.filter(obj => obj.firstName.toLowerCase().includes(temp.toLowerCase()))
+      setSearchData(resultData);
+      setflag(true);
+    }
+  }
+  const empList = flag ? searchData : empData;
 
   return (
     <div className="show-employee-list">
@@ -40,7 +56,7 @@ const ShowEmployeeList = () => {
         id="standard-bare"
         variant="outlined"
         label="Search here.."
-        onChange={(e) => setSearchResult(e.target.value)}
+        onChange={handleChange}
         InputProps={{
           endAdornment: (
             <IconButton>
@@ -62,12 +78,7 @@ const ShowEmployeeList = () => {
           </TableHead>
           <TableBody>
 
-            {empData.filter((val) => {
-              if (searchResult === '') { return val; }
-              else if (val.firstName.toLowerCase().includes(searchResult?.toLowerCase())) {
-                return val
-              }
-            }).map((row, i) => (
+            {empList.length > 0 ? empList.map((row, i) => (
               <TableRow key={row.eId}>
                 <TableCell component="th" scope="row"> {row.firstName}</TableCell>
                 <TableCell align="right">{row.lastName}</TableCell>
@@ -76,9 +87,8 @@ const ShowEmployeeList = () => {
                 <TableCell align="right">{row.department}</TableCell>
                 <TableCell align="right"><DeleteIcon onClick={() => deleteEmployee(row.eId)} /></TableCell>
                 <TableCell align="right"><EditIcon onClick={() => editEmployee(row.eId)} /></TableCell>
-
               </TableRow>
-            ))}
+            )) : "No records found" }
           </TableBody>
         </Table>
       </TableContainer>
