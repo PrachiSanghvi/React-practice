@@ -49,7 +49,10 @@ import { darkModeContext } from './ReactAllConcept/useContext';
 // import MyWebsite from './ReactAllConcept/MyWebsite';
 // import UseReduce from './ReactAllConcept/UseReduce';
 // import UseRefEx from './ReactAllConcept/UseRefEx';
-import EmployeeDepart from './TestSolution/EmployeeDepart';
+// import EmployeeDepart from './TestSolution/EmployeeDepart';
+// import UseCallbackEx from './UseCallbackEx/UseCallbackEx'
+import EnhancedLikes from './HOCExample/LikeComponent';
+import EnhanceComments from './HOCExample/CommentComponent';
 
 const { useEffect , useState } = React;
 const Counter = () =>  {
@@ -154,7 +157,10 @@ function App() {
           {/* <MyWebsite /> */}
           {/* <UseReduce /> */}
           {/* <UseRefEx /> */}
-          <EmployeeDepart />
+          {/* <EmployeeDepart /> */}
+          {/* <UseCallbackEx /> */}
+          <EnhancedLikes />
+          <EnhanceComments />
         </div>
       </header>
     </div>
